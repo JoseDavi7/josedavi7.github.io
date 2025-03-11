@@ -1,0 +1,219 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-image: url("https://images.unsplash.com/photo-1602928944155-4c7e0370b2d2?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGZvbmRvJTIwZGUlMjBwYW50YWxsYSUyMGRlJTIwZmxvcmVzJTIwYW1hcmlsbGFzfGVufDB8fDB8fHww");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .centered {
+    margin: auto;
+    width: 90%;
+    max-width: 900px;
+  }
+  
+  .flipbook {
+    width: 90vw;
+    max-width: 600px;
+    height: 80vh;
+    max-height: 500px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1200px;
+  }
+  
+  .flipbook .leaf {
+    position: absolute;
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 50%;
+    background-color: #fff;
+    left: 50%;
+    transition: transform 1s;
+    transform: rotate3d(0, 1, 0, 0deg);
+    transform-origin: left 0px;
+  }
+  
+  .flipbook .leaf .page {
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+  
+  .flipbook .leaf .page.front {
+    transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 0.1px);
+  }
+  
+  .flipbook .leaf .page.back {
+    transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 0.1px);
+  }
+  
+  .disable {
+    user-select: none;
+    opacity: 0.6;
+  }
+  
+  .title {
+    text-align: center;
+    width: 100%;
+    padding-top: 1em;
+  }
+  
+  .page {
+    padding: 1em;
+  }
+  
+  .page.front {
+    border-radius: 0em 1em 1em 0;
+  }
+  
+  .page.back {
+    border-radius: 1em 0em 0em 1em;
+  }
+  
+  .leaf {
+    background-color: transparent !important;
+  }
+  
+  .pageNumber {
+    font-size: 0.75em;
+    position: absolute;
+    bottom: 0.5em;
+  }
+  
+  .front .pageNumber {
+    right: 0.75em;
+  }
+  
+  .back .pageNumber {
+    left: 0.75em;
+  }
+  
+  .contents-row {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  
+  .contents-row .spacer {
+    flex: 1 1;
+    height: 1em;
+    border-bottom: 1px dashed #000;
+  }
+  
+  .contents-row .text {
+    flex: 0 0 auto;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    font-family: cursive;
+  }
+  
+  p {
+    font-size: 1em;
+  }
+  
+  body[onload] {
+    transform: scale(1);
+    transform-origin: center top;
+  }
+  
+  body[onload] .leaf:nth-child(1) {
+    transform: rotate3d(0, 1, 0, -128deg) !important;
+  }
+  
+  body[onload] .leaf:nth-child(2) {
+    transform: rotate3d(0, 1, 0, -70deg) !important;
+  }
+  
+  body[onload] .leaf:nth-child(3) {
+    transform: rotate3d(0, 1, 0, -40deg) !important;
+  }
+  
+  body[onload] div.leaf:nth-child(4) > div:nth-child(1) {
+    background-color: #e76f51;
+  }
+  
+  .cd__intro {
+    background: #c0e;
+  }
+  .controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+  }
+  .buttonxa button {
+    background-color: yellow; /* Fondo amarillo */
+    border: none; /* Sin bordes */
+    padding: 10px 20px; /* Ajusta el relleno según tu preferencia */
+    font-size: 18px; /* Tamaño de fuente */
+    cursor: pointer;
+    position: relative; /* Necesario para el resplandor */
+    border-radius: 20px; /* Esquinas redondeadas */
+    transition: background-color 0.3s ease-in-out; /* Transición suave para el color de fondo */
+  }
+  
+  /* Estilo para el enlace dentro del botón */
+  .buttonxa button a {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: inherit; /* Hereda el color del texto del botón */
+  }
+  
+  /* Efecto de resplandor al pasar el cursor sobre el botón */
+  .buttonxa button:hover {
+    background-color: orange; /* Cambia el color de fondo al pasar el mouse a naranja */
+    box-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow; /* Efecto de resplandor amarillo */
+  }
+  
+  
+  /* Ajustes Responsive */
+  @media (max-width: 768px) {
+    .flipbook {
+      width: 100vw;
+      max-width: 95%;
+      height: 85vh;
+      max-height: 500px;
+    }
+    
+    .page {
+      font-size: 0.9em;
+      padding: 0.75em;
+    }
+  
+    .title {
+      font-size: 1.2em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .flipbook {
+      width: 100vw;
+      height: 90vh;
+      max-height: 450px;
+    }
+  
+    .page {
+      font-size: 0.85em;
+      padding: 0.5em;
+    }
+  
+    .title {
+      font-size: 1em;
+    }
+  }
+  
